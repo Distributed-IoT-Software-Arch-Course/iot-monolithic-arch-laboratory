@@ -1,0 +1,5 @@
+broker_ip: "127.0.0.1"
+broker_port: 1883
+username: null
+password: null
+target_telemetry_topic: "device/+/temperature"
