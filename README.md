@@ -718,6 +718,30 @@ if __name__ == '__main__':
 
 ## Testing
 
+### Use MQTT Broker with Credentials
+
+The default code for the example has been designed to work with a local MQTT Broker.
+If you work with a different broker that require authentication with credentials and/or dedicated topic usage
+according to specific ACL (Access Contro List) configuration you have to:
+
+- Change the `mqtt_data_fetcher.py` to support:
+  - Authentication 
+  - Topic Structure for the subscription
+- Change MQTT Tester application such as `test/mqtt-tester/json_producer_default_device.py` to support:
+  - Authentication 
+  - Topic Structure for publishing
+
+In both cases the MQTT Paho lines of code to specify the user credentials are:
+
+```python
+# Set Account Username & Password
+mqtt_client.username_pw_set(username, password)
+```
+
+Then both in the subscription and publish parts you have to use the correct topic structure (if required by the broker).
+
+### Running the Application
+
 To simulate the data fetching from IoT devices, you can publish messages to the MQTT broker as an already registered device
 `d0001` using the script `test/mqtt/json_producer_default_device.py`.
 
