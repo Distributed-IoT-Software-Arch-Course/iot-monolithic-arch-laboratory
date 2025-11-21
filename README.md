@@ -97,6 +97,13 @@ class DataManager:
         if device_id not in self.device_timeseries_data:
             self.device_timeseries_data[device_id] = []
         self.device_timeseries_data[device_id].append(telemetry_data)
+
+    def get_telemetry_data_by_device_id(self, device_id):
+        """Return the telemetry data for a given device"""
+        if device_id in self.device_timeseries_data:
+            return self.device_timeseries_data[device_id]
+        else:
+            return None
 ```
 
 ### Application Layer
